@@ -108,5 +108,4 @@ This app stores passwords locally. Keep your secret.key and db.sqlite3 safe — 
 - GitHub: [@SimranSajid](https://github.com/SimranSajid)
 
 ## 📄 License
-
-This project is for educational purposes.
+MIT License — feel free to use and learn from this project.
