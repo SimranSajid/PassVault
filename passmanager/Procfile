@@ -1,1 +1,1 @@
-web: gunicorn passmanager.wsgi --log-file -
+web: gunicorn passmanager.wsgi:application --log-file -
