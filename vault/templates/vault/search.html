@@ -1,0 +1,49 @@
+{% extends 'vault/base.html' %}
+
+{% block content %}
+<h3 class="mb-4">🔍 Search Results for "{{ query }}"</h3>
+
+<a href="{% url 'dashboard' %}" class="btn btn-outline-light mb-3">← Back to Dashboard</a>
+
+{% if results %}
+<div class="table-responsive">
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>🌐 Website</th>
+                <th>🗂 Category</th>
+                <th>🔑 Password</th>
+                <th>📅 Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in results %}
+            <tr>
+                <td>{{ entry.website }}</td>
+                <td><span class="badge bg-secondary">{{ entry.category }}</span></td>
+                <td>
+                    <span id="pwd-{{ entry.id }}" class="text-muted">••••••••</span>
+                    <button class="btn btn-sm btn-outline-light ms-2"
+                        onclick="togglePassword('{{ entry.id }}', '{{ entry.password }}')">👁</button>
+                </td>
+                <td>{{ entry.created_at|date:"d M Y" }}</td>
+                <td>
+                    <a href="{% url 'update_password' entry.id %}" class="btn btn-sm btn-warning">✏️</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No results found for "{{ query }}".</p>
+{% endif %}
+
+<script>
+function togglePassword(id, pwd) {
+    const span = document.getElementById('pwd-' + id);
+    span.textContent = span.textContent === '••••••••' ? pwd : '••••••••';
+}
+</script>
+{% endblock %}

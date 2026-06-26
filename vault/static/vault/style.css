@@ -1,0 +1,167 @@
+/* General */
+body {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: 1px solid #333;
+    padding: 12px 24px;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: #f0f0f0 !important;
+}
+
+/* Cards */
+.card {
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #1e1e2e !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    background-color: #2a2a3e;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #2a2a3e;
+    border-color: #6c63ff;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(108,99,255,0.25);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #6c63ff, #48cfad);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #48cfad, #06d6a0);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-warning {
+    border-radius: 6px;
+}
+
+.btn-danger {
+    border-radius: 6px;
+}
+
+/* Table */
+.table-dark {
+    background: #1e1e2e;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table-dark th {
+    background: #2a2a3e;
+    color: #a0a0c0;
+    font-weight: 600;
+    border-bottom: 2px solid #444;
+    padding: 14px;
+}
+
+.table-dark td {
+    padding: 14px;
+    vertical-align: middle;
+    border-color: #333;
+    color: #e0e0f0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #2a2a3e !important;
+}
+
+/* Badge */
+.badge {
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+}
+
+/* Stats Cards */
+.stat-card {
+    background: #1e1e2e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6c63ff;
+}
+
+.stat-label {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Search */
+.input-group .form-control {
+    border-right: none;
+}
+
+.input-group .btn {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Alert */
+.alert {
+    border-radius: 10px;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    font-size: 0.85rem;
+    margin-top: 40px;
+    border-top: 1px solid #222;
+}
+
+/* Password toggle */
+.pwd-text {
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+/* Category colors */
+.cat-social { background-color: #4267B2 !important; }
+.cat-banking { background-color: #27ae60 !important; }
+.cat-work { background-color: #e67e22 !important; }
+.cat-shopping { background-color: #e74c3c !important; }
+.cat-other { background-color: #555 !important; }

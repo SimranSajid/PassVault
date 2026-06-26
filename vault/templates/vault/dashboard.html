@@ -1,0 +1,129 @@
+{% extends 'vault/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Stats Row -->
+<div class="row mb-4 g-3">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="stat-number">{{ entries|length }}</div>
+            <div class="stat-label">Total Passwords</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="stat-number" style="color:#4267B2">
+                {{ entries|length }}
+            </div>
+            <div class="stat-label">🌐 Websites Saved</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="stat-number" style="color:#48cfad">🔒</div>
+            <div class="stat-label">All Encrypted</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="stat-number" style="color:#e67e22">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="stat-label">Secure & Local</div>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🔐 Your Passwords</h2>
+    <a href="{% url 'add_password' %}" class="btn btn-success">
+        <i class="bi bi-plus-lg"></i> Add Password
+    </a>
+</div>
+
+<!-- Search Bar -->
+<form method="GET" action="{% url 'search_password' %}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control"
+            placeholder="🔍 Search by website name...">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+    </div>
+</form>
+
+{% if entries %}
+<div class="table-responsive">
+    <table class="table table-dark table-hover align-middle">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>🌐 Website</th>
+                <th>🗂 Category</th>
+                <th>🔑 Password</th>
+                <th>📅 Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td class="text-muted">{{ forloop.counter }}</td>
+                <td class="fw-semibold">{{ entry.website }}</td>
+                <td>
+                    <span class="badge cat-{{ entry.category }}">
+                        {{ entry.category }}
+                    </span>
+                </td>
+                <td>
+                    <span id="pwd-{{ entry.id }}" class="pwd-text text-muted">••••••••</span>
+                    <button class="btn btn-sm btn-outline-secondary ms-2"
+                        onclick="togglePassword('{{ entry.id }}', '{{ entry.password }}')">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </td>
+                <td class="text-muted">{{ entry.created_at|date:"d M Y" }}</td>
+                <td>
+                    <a href="{% url 'update_password' entry.id %}"
+                        class="btn btn-sm btn-warning me-1">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <form method="POST" action="{% url 'delete_password' entry.id %}"
+                        style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Delete {{ entry.website }}?')">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="text-center mt-5 py-5">
+    <i class="bi bi-shield-lock" style="font-size:4rem; color:#444"></i>
+    <h4 class="mt-3 text-muted">No passwords saved yet</h4>
+    <p class="text-muted">Click "+ Add Password" to get started!</p>
+    <a href="{% url 'add_password' %}" class="btn btn-success mt-2">
+        <i class="bi bi-plus-lg"></i> Add Your First Password
+    </a>
+</div>
+{% endif %}
+
+<script>
+function togglePassword(id, pwd) {
+    const span = document.getElementById('pwd-' + id);
+    const btn = span.nextElementSibling;
+    if (span.textContent === '••••••••') {
+        span.textContent = pwd;
+        btn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    } else {
+        span.textContent = '••••••••';
+        btn.innerHTML = '<i class="bi bi-eye"></i>';
+    }
+}
+</script>
+{% endblock %}
