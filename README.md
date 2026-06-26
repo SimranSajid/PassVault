@@ -79,7 +79,9 @@ http://127.0.0.1:8000
 - Clickjacking protection
 - Environment variables for secrets
 
-## 📁 Project Structure : 
+## Project Structure
+
+```text
 PassManagerWeb/
 ├── passmanager/
 │   ├── settings.py
@@ -94,6 +96,7 @@ PassManagerWeb/
 ├── requirements.txt
 ├── Procfile
 └── manage.py
+``` 
 
 ## ⚠️ Note
 
