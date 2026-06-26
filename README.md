@@ -70,6 +70,8 @@ python manage.py runserver
 8. Open browser:
 http://127.0.0.1:8000
 
+
+
 ## 🔒 Security Features
 
 - Fernet encryption for all stored passwords
@@ -97,6 +99,15 @@ PassManagerWeb/
 ├── Procfile
 └── manage.py
 ``` 
+## 📸 Screenshots
+
+### 🔐 Login Page
+
+![Login Page](screenshots/login_pg.png)
+
+### 🏠 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
 
 ## ⚠️ Note
 
