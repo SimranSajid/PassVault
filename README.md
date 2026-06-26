@@ -102,12 +102,10 @@ PassManagerWeb/
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-
-![Login Page](screenshots/login_pg.png)
+![Login Page](passmanager/screenshots/login_pg.png)
 
 ### 🏠 Dashboard
-
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](passmanager/screenshots/dashboard.png)
 
 ## ⚠️ Note
 
